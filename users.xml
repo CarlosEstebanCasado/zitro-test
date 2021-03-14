@@ -5,4 +5,9 @@
         <email>carlos.esteban.casado@gmail.com</email>
         <password>qwerty</password>
     </user>
+    <user>
+        <name>Admin</name>
+        <email>admin@gmail.com</email>
+        <password>123456</password>
+    </user>
 </users>
