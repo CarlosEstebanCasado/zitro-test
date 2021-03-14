@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
 {
+    private const USERS_FILE =__DIR__ . '/../../users.xml';
     /**
      * Symfony calls this method if you use features like switch_user
      * or remember_me.
@@ -28,7 +29,13 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
         // it is whatever value is being returned by the getUsername()
         // method in your User class.
         
-        throw new \Exception('TODO: fill in loadUserByUsername() inside '.__FILE__);
+        $usersData = simplexml_load_file(self::USERS_FILE);
+        foreach ($usersData as $user) {
+            if ($user->email == $username) {
+                return new User($user->name->__toString(), $user->email->__toString(), $user->password->__toString(), ['ROLE_USER']);
+            }
+        }
+        //throw new \Exception('TODO: fill in loadUserByUsername() inside '.__FILE__);
     }
 
     /**
@@ -52,7 +59,8 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
 
         // Return a User object after making sure its data is "fresh".
         // Or throw a UsernameNotFoundException if the user no longer exists.
-        throw new \Exception('TODO: fill in refreshUser() inside '.__FILE__);
+        //throw new \Exception('TODO: fill in refreshUser() inside '.__FILE__);
+        return $user;
     }
 
     /**
