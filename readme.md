@@ -1,7 +1,7 @@
 ## ZITRO-TEST
 
 ### Description
-This project was made to realise the technical test for Zitro.
+This project was made to perform the technical test for Zitro.
 
 The test consist on make a Login and authenticate the users through XML file where the data is stored.
 
